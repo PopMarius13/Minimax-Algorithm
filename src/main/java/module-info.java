@@ -1,4 +1,4 @@
-module com.example.minimaxalgorithm {
+module com.example.tema1 {
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.web;
@@ -9,7 +9,9 @@ module com.example.minimaxalgorithm {
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
+    requires lombok;
 
-    opens com.example.minimaxalgorithm to javafx.fxml;
-    exports com.example.minimaxalgorithm;
+    opens image;
+    exports com.example.tema1;
+    opens com.example.tema1 to javafx.fxml;
 }
