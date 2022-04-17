@@ -1,0 +1,57 @@
+Joc -> User vs PC
+
+
+Model ->
+	
+	MinMax -> calculate_next_arrow()
+
+	User -> id_player, username, score -> get/set
+
+	PC -> id_payer, MinMax -> select_next_arrow()
+
+	Board -> squares_number, squares[][] -> singleton
+
+	Game -> Score, idGame, User, Pc, start, end -> select_next_player(), startGame(), endGame() 
+
+	Score -> Hash score_by_user, addScore(score, username), getScore()
+
+
+View -> 
+	
+	IGame
+		getNextArrowUser(): position
+		getUser(): username
+		getSquaresNumber(): squaresNumber
+		setNextArrowPc(position): void
+		setScore(score): void
+
+	MediiGUI
+		squares :Button[]
+		selecterSquaresNumber :buttonGroup
+		username :TextBOx
+		btnStart :Button
+		btnPause :Button
+		btnClose :Button
+
+		+MediiGUI()
+		- btnStartClick()
+		- btnCloseClick()
+		- btnPauseClick()
+		- btnSquare()
+		- select()
+
+Presenter 
+	
+	PGame
+		igame: IGame
+		game: Game
+
+
+		PGame()
+		Start()
+		Close()
+
+
+		
+
+
