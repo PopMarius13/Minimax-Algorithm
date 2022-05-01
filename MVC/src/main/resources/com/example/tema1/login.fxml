@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.tema1.LoginController"
+            prefHeight="400.0" prefWidth="600.0" alignment="CENTER">
+
+    <VBox spacing="20" alignment="CENTER">
+        <HBox alignment="CENTER">
+            <VBox spacing="20" alignment="CENTER_LEFT">
+                <Label text="Username: " fx:id="username_text"/>
+                <Label text="Password: " fx:id="password_text"/>
+            </VBox>
+            <VBox spacing="20" alignment="CENTER_LEFT">
+                <TextField fx:id="username"/>
+                <PasswordField fx:id="password"/>
+            </VBox>
+        </HBox>
+
+        <HBox spacing="20" alignment="CENTER">
+            <Button text="Sign In" onAction="#onSignInButton" fx:id="button_sigin"/>
+            <Button text="Register" onAction="#onRegisterButton" fx:id="button_register"/>
+        </HBox>
+
+        <HBox spacing="20" alignment="CENTER">
+            <Button text="Romana" onAction="#onRomanaButton"/>
+            <Button text="English" onAction="#onEnglishButton"/>
+            <Button text="Spanish" onAction="#onSpanishButton"/>
+        </HBox>
+    </VBox>
+
+</VBox>

@@ -3,9 +3,9 @@
   <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.38">
     <root id="1">
       <DateStyle>dmy</DateStyle>
-      <IntrospectionStateNumber>515</IntrospectionStateNumber>
+      <IntrospectionStateNumber>582</IntrospectionStateNumber>
       <ServerVersion>12.9</ServerVersion>
-      <StartupTime>1650207724</StartupTime>
+      <StartupTime>1651391596</StartupTime>
       <TimeZones>true ACDT
 true ACSST
 false ACST
@@ -1423,9 +1423,10 @@ true posixrules
 13163||10|C|G
 13163||-9223372036854775808|U|G
 13163||10|U|G</Grants>
-      <IntrospectionStateNumber>515</IntrospectionStateNumber>
+      <IntrospectionStateNumber>583</IntrospectionStateNumber>
       <ObjectId>16386</ObjectId>
       <Relations>sequence|table|16387|16389|1
+sequence|table|16398|16400|1
 </Relations>
       <OwnerName>postgres</OwnerName>
     </database>
@@ -1438,13 +1439,34 @@ true posixrules
       <ObjectId>16385</ObjectId>
       <OwnerName>postgres</OwnerName>
     </database>
-    <role id="5" parent="1" name="pg_signal_backend">
-      <ObjectId>4200</ObjectId>
+    <role id="5" parent="1" name="pg_execute_server_program">
+      <ObjectId>4571</ObjectId>
     </role>
-    <role id="6" parent="1" name="pg_read_server_files">
+    <role id="6" parent="1" name="pg_monitor">
+      <ObjectId>3373</ObjectId>
+      <RoleGrants>3374
+3375
+3377</RoleGrants>
+    </role>
+    <role id="7" parent="1" name="pg_read_all_settings">
+      <ObjectId>3374</ObjectId>
+    </role>
+    <role id="8" parent="1" name="pg_read_all_stats">
+      <ObjectId>3375</ObjectId>
+    </role>
+    <role id="9" parent="1" name="pg_read_server_files">
       <ObjectId>4569</ObjectId>
     </role>
-    <role id="7" parent="1" name="postgres">
+    <role id="10" parent="1" name="pg_signal_backend">
+      <ObjectId>4200</ObjectId>
+    </role>
+    <role id="11" parent="1" name="pg_stat_scan_tables">
+      <ObjectId>3377</ObjectId>
+    </role>
+    <role id="12" parent="1" name="pg_write_server_files">
+      <ObjectId>4570</ObjectId>
+    </role>
+    <role id="13" parent="1" name="postgres">
       <BypassRls>1</BypassRls>
       <CanLogin>1</CanLogin>
       <CreateDb>1</CreateDb>
@@ -1453,33 +1475,12 @@ true posixrules
       <Replication>1</Replication>
       <SuperRole>1</SuperRole>
     </role>
-    <role id="8" parent="1" name="pg_write_server_files">
-      <ObjectId>4570</ObjectId>
-    </role>
-    <role id="9" parent="1" name="pg_execute_server_program">
-      <ObjectId>4571</ObjectId>
-    </role>
-    <role id="10" parent="1" name="pg_read_all_stats">
-      <ObjectId>3375</ObjectId>
-    </role>
-    <role id="11" parent="1" name="pg_monitor">
-      <ObjectId>3373</ObjectId>
-      <RoleGrants>3374
-3375
-3377</RoleGrants>
-    </role>
-    <role id="12" parent="1" name="sammy">
+    <role id="14" parent="1" name="sammy">
       <CanLogin>1</CanLogin>
       <CreateDb>1</CreateDb>
       <CreateRole>1</CreateRole>
       <ObjectId>16384</ObjectId>
       <SuperRole>1</SuperRole>
-    </role>
-    <role id="13" parent="1" name="pg_read_all_settings">
-      <ObjectId>3374</ObjectId>
-    </role>
-    <role id="14" parent="1" name="pg_stat_scan_tables">
-      <ObjectId>3377</ObjectId>
     </role>
     <tablespace id="15" parent="1" name="pg_default">
       <ObjectId>1663</ObjectId>
@@ -4655,7 +4656,7 @@ true posixrules
     <schema id="247" parent="2" name="public">
       <Comment>standard public schema</Comment>
       <Current>1</Current>
-      <IntrospectionStateNumber>515</IntrospectionStateNumber>
+      <IntrospectionStateNumber>583</IntrospectionStateNumber>
       <ObjectId>2200</ObjectId>
       <StateNumber>275</StateNumber>
       <OwnerName>postgres</OwnerName>
@@ -4666,13 +4667,79 @@ true posixrules
       <StateNumber>494</StateNumber>
       <OwnerName>postgres</OwnerName>
     </sequence>
-    <table id="249" parent="247" name="player">
-      <ObjectId>16389</ObjectId>
-      <StateNumber>494</StateNumber>
+    <sequence id="249" parent="247" name="user_id_seq">
+      <DataType>integer|0s</DataType>
+      <ObjectId>16398</ObjectId>
+      <StateNumber>568</StateNumber>
+      <OwnerName>postgres</OwnerName>
+    </sequence>
+    <table id="250" parent="247" name="account">
+      <ObjectId>16400</ObjectId>
+      <StateNumber>580</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
-    <column id="250" parent="249" name="id">
+    <table id="251" parent="247" name="score">
+      <ObjectId>16389</ObjectId>
+      <StateNumber>563</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>postgres</OwnerName>
+    </table>
+    <column id="252" parent="250" name="id">
+      <DataType>integer|0s</DataType>
+      <DefaultExpression>nextval(&apos;user_id_seq&apos;::regclass)</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>568</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="253" parent="250" name="username">
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StateNumber>568</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="254" parent="250" name="password">
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+      <StateNumber>568</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="255" parent="250" name="user_id_uindex">
+      <ColNames>id</ColNames>
+      <ObjectId>16406</ObjectId>
+      <StateNumber>569</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <index id="256" parent="250" name="user_pk">
+      <ColNames>id</ColNames>
+      <ObjectId>16404</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>568</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <index id="257" parent="250" name="user_username_uindex">
+      <ColNames>username</ColNames>
+      <ObjectId>16407</ObjectId>
+      <StateNumber>570</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+      <CollationNames>default</CollationNames>
+      <CollationIds>100</CollationIds>
+      <CollationParentNames>pg_catalog</CollationParentNames>
+    </index>
+    <key id="258" parent="250" name="user_pk">
+      <ColNames>id</ColNames>
+      <ObjectId>16405</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>568</StateNumber>
+      <UnderlyingIndexId>16404</UnderlyingIndexId>
+    </key>
+    <column id="259" parent="251" name="id">
       <DataType>integer|0s</DataType>
       <DefaultExpression>nextval(&apos;player_id_seq&apos;::regclass)</DefaultExpression>
       <NotNull>1</NotNull>
@@ -4680,28 +4747,28 @@ true posixrules
       <StateNumber>494</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="251" parent="249" name="username">
+    <column id="260" parent="251" name="username">
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StateNumber>494</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="252" parent="249" name="score">
+    <column id="261" parent="251" name="score">
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
       <StateNumber>494</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <index id="253" parent="249" name="player_id_uindex">
+    <index id="262" parent="251" name="player_id_uindex">
       <ColNames>id</ColNames>
       <ObjectId>16395</ObjectId>
       <StateNumber>495</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <index id="254" parent="249" name="player_pk">
+    <index id="263" parent="251" name="player_pk">
       <ColNames>id</ColNames>
       <ObjectId>16393</ObjectId>
       <Primary>1</Primary>
@@ -4709,7 +4776,7 @@ true posixrules
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="255" parent="249" name="player_pk">
+    <key id="264" parent="251" name="player_pk">
       <ColNames>id</ColNames>
       <ObjectId>16394</ObjectId>
       <Primary>1</Primary>
