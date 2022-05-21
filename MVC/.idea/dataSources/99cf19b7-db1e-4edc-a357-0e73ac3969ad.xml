@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataSource name="PlayersDB">
-  <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.38">
+  <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.39">
     <root id="1">
       <DateStyle>dmy</DateStyle>
       <IntrospectionStateNumber>582</IntrospectionStateNumber>
